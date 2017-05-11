@@ -16,13 +16,13 @@ namespace Demo
         }
 
         // ReSharper disable once InconsistentNaming
-        public async Task<IEnumerable<string>> IOBoundOperationAsync(int sec)
+        public async Task<IEnumerable<string>> IOBoundOperationAsync(int timeoutInSec)
         {
-            _logger.LogInformation("Remote service call started. Delay is {delay} second(s)", sec);
-            await Task.Delay(sec * 1000);
-            _logger.LogInformation("Remote service call finished.", sec);
+            _logger.LogInformation("Remote service call started. Delay is {delay} second(s)", timeoutInSec);
+            await Task.Delay(timeoutInSec * 1000);
+            _logger.LogInformation("Remote service call finished.", timeoutInSec);
 
-            return new[] { Guid.NewGuid().ToString() };
+            return new[] { Guid.NewGuid().ToString(), Guid.NewGuid().ToString() };
         }
     }
 }

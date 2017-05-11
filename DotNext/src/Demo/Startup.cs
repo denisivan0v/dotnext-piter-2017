@@ -60,7 +60,7 @@ namespace Demo
                             c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                         }
 
-                        c.DocExpansion("list");
+                        c.DocExpansion("none");
                         c.EnabledValidator();
                         c.ShowRequestHeaders();
                     });
