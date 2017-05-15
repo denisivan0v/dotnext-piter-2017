@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Controllers
 {
-    [ApiVersion("1.0")]
-    [ApiVersion("2.0")]
+    [ApiVersion("1.0", Deprecated = true)]
+    [ApiVersion("2.0", Deprecated = true)]
     [ApiVersion("3.0")]
     [Route("[controller]")]
     [Route("{api-version:apiVersion}/[controller]")]
@@ -22,7 +23,7 @@ namespace Demo.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("1.0")]
+        [Obsolete, MapToApiVersion("1.0")]
         public async Task<IEnumerable<string>> Demo1()
         {
             var result = new ConcurrentBag<string>();
@@ -43,7 +44,7 @@ namespace Demo.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("2.0")]
+        [Obsolete, MapToApiVersion("2.0")]
         public async Task<IEnumerable<string>> Demo2()
         {
             var result = new ConcurrentBag<string>();
