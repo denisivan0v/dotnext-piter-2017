@@ -16,7 +16,7 @@ namespace Demo
         }
 
         // ReSharper disable once InconsistentNaming
-        public async Task<IEnumerable<string>> IOBoundOperationAsync(int timeoutInSec)
+        public async Task<IReadOnlyCollection<string>> IOBoundOperationAsync(int timeoutInSec)
         {
             _logger.LogInformation("Remote service call started. Delay is {delay} second(s)", timeoutInSec);
             await Task.Delay(timeoutInSec * 1000);
